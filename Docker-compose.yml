@@ -1,0 +1,19 @@
+version: "3.1"
+services: 
+  app:
+    build: .
+    ports: 
+      - "3000:3000"      
+    networks:
+      - "node_mongo_network"
+    volumes:
+      - "./app:/app"
+  mongodb: 
+    image: 'bitnami/mongodb:latest' 
+    ports: 
+      - "27017:27017" 
+    volumes:
+      - "./data:/data/db"
+
+networks:
+  node_mongo_network:
